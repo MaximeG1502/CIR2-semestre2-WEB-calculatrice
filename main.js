@@ -60,6 +60,63 @@ function calculate() {
   }
 }
 
+
+let xValue = 0;
+let currentFunction = '';
+
+function drawGraph(func) {
+    currentFunction = func;
+}
+
+function draw() {
+    xValue = document.getElementById('xValue').value;
+    let yValues = [];
+
+    // Calculate y values based on the function
+    switch(currentFunction) {
+        case 'sin':
+            for(let i = 0; i <= xValue; i++) {
+                yValues.push(Math.sin(i));
+            }
+            break;
+        case 'cos':
+            // Similar to 'sin'
+            break;
+        case 'tan':
+            // Similar to 'sin'
+            break;
+        case 'log':
+            // Similar to 'sin'
+            break;
+    }
+
+    // Draw the graph using Chart.js
+    var ctx = document.getElementById('graphCanvas').getContext('2d');
+    var chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: Array.from({length: xValue}, (_, i) => i + 1),
+            datasets: [{
+                label: currentFunction,
+                data: yValues,
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+}
+
+
+
+
 function updateDisplay(value) {
   document.getElementById("display").value = value;
 }
