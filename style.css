@@ -1,0 +1,47 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+#calculator {
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 5px;
+    transform: scale(0.8);
+}
+
+#display {
+    margin-bottom: 20px;
+    font-size: 32px;
+    text-align: right;
+}
+
+.button-row {
+    margin-bottom: 10px;
+}
+
+.btn {
+    width: 80px; /* Set the width of buttons */
+    height: 80px; /* Set the height of buttons */
+    margin: 5px;
+    font-size: 24px; /* Set the font-size of buttons */
+}
+
+/* Dark mode styling */
+.dark-mode {
+    background-color: black;
+    color: white;
+}
+
+.dark-mode .btn {
+    background-color: #555;
+    color: #fff;
+}
+
+.dark-mode #display {
+    background-color: #555;
+    color: #fff;
+}
