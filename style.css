@@ -24,13 +24,13 @@ body {
 }
 
 .btn {
-    width: 80px; /* Set the width of buttons */
-    height: 80px; /* Set the height of buttons */
+    width: 80px; 
+    height: 80px; 
     margin: 5px;
-    font-size: 24px; /* Set the font-size of buttons */
+    font-size: 24px; 
 }
 
-/* Dark mode styling */
+
 .dark-mode {
     background-color: black;
     color: white;

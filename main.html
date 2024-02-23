@@ -15,30 +15,31 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6">
-                <!-- Calculator Panel -->
                 <div id="calculator" class="mt-5">
-                    <!-- Display -->
                     <input type="text" id="display" class="form-control" disabled />
-                    <!-- Digit Buttons -->
                     <div class="button-row">
                         <button class="btn btn-secondary" onclick="appendToDisplay('7')">7</button>
                         <button class="btn btn-secondary" onclick="appendToDisplay('8')">8</button>
                         <button class="btn btn-secondary" onclick="appendToDisplay('9')">9</button>
+                        <button class="btn btn-danger" onclick="clearCalculator()">C</button>
                     </div>
                     <div class="button-row">
                         <button class="btn btn-secondary" onclick="appendToDisplay('6')">6</button>
                         <button class="btn btn-secondary" onclick="appendToDisplay('5')">5</button>
                         <button class="btn btn-secondary" onclick="appendToDisplay('4')">4</button>
+                        <button class="btn btn orange" onclick="calculatePercentage()">%</button>
                     </div>
                     <div class="button-row">
                         <button class="btn btn-secondary" onclick="appendToDisplay('3')">3</button>
                         <button class="btn btn-secondary" onclick="appendToDisplay('2')">2</button>
                         <button class="btn btn-secondary" onclick="appendToDisplay('1')">1</button>
+                        <button class="btn btn orange" onclick="calculateSquareRoot()">√</button>
                     </div>
                     <div class="button-row">
                         <button class="btn btn-secondary" onclick="appendToDisplay('0')">0</button>
                         <button class="btn btn-secondary" onclick="appendToDisplay('.')">.</button>
                         <button class="btn btn-success" onclick="appendToDisplay('=')">=</button>
+                        <button class="btn btn-dark" onclick="toggleDarkMode()">Dark Mode</button>
                     </div>
 
 
@@ -46,23 +47,14 @@
                         <button class="btn btn-primary" onclick="appendToDisplay('-')">-</button>
                         <button class="btn btn-primary" onclick="appendToDisplay('+')">+</button>
                         <button class="btn btn-primary" onclick="appendToDisplay('/')">/</button>
-                        <button class="btn btn-secondary" onclick="appendToDisplay('*')">*</button>
+                        <button class="btn btn-primary" onclick="appendToDisplay('*')">*</button>
                     </div>
 
-                    <!-- Function Buttons -->
                     <div class="button-row">
                         <button class="btn btn-info" onclick="calculateSine()">sin</button>
                         <button class="btn btn-info" onclick="calculateCosine()">cos</button>
                         <button class="btn btn-info" onclick="calculateTangent()">tan</button>
                         <button class="btn btn-info" onclick="calculateLogarithm()">log</button>
-                    <!-- Clear Button -->
-                    <button class="btn btn-danger" onclick="clearCalculator()">C</button>
-                    <!-- Percentage, Square Root, etc. -->
-
-                    <button class="btn btn orange" onclick="calculateSquareRoot()">√</button>
-                    <button class="btn btn orange" onclick="calculatePercentage()">%</button>
-                    <!-- Toggle Dark Mode -->
-                    <button class="btn btn-dark" onclick="toggleDarkMode()">Dark Mode</button>
                 </div>
             </div>
         </div>
