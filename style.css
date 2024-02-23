@@ -41,6 +41,11 @@ body {
     color: #fff;
 }
 
+.orange{
+    background-color: orange;
+    color: white;
+}
+
 .dark-mode #display {
     background-color: #555;
     color: #fff;
