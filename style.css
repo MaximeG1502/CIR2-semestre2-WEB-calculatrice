@@ -17,6 +17,7 @@ body {
     margin-bottom: 20px;
     font-size: 32px;
     text-align: right;
+    color: black;
 }
 
 .button-row {
@@ -49,4 +50,21 @@ body {
 .dark-mode #display {
     background-color: #555;
     color: #fff;
+}
+
+#graph {
+    align-self: flex-start; /* Positionne l'élément en haut */
+    margin-top: 20px; /* Ajoute une marge en haut pour l'éloigner du contenu principal */
+    margin-right: 10px; /* Ajoute une marge à droite pour l'éloigner du bord droit */
+}
+
+
+#graph label {
+    display: block; /* Affiche les étiquettes sur des lignes séparées */
+    margin-bottom: 5px; /* Ajoute un espacement entre les étiquettes et les éléments d'entrée */
+}
+
+#graph input[type="number"] {
+    width: 100px; /* Ajuste la largeur de l'élément d'entrée pour l'aligner avec le bouton */
+    margin-right: 5px; /* Ajoute un espacement entre l'élément d'entrée et le bouton */
 }

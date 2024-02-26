@@ -9,9 +9,25 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="main.js"></script>
 </head>
 <body>
+    <h1>TP CALCULATRICE WEB</h1>
+    <div id="graph" class="mt-5">
+        <div>
+            <label for="expression">Expression de la fonction:</label>
+            <input type="text" id="expression">
+            <label for="x-min">Valeur minimale de x:</label>
+            <input type="number" id="x-min" step="any">
+            <label for="x-max">Valeur maximale de x:</label>
+            <input type="number" id="x-max" step="any">
+            <label for="step">Pas:</label>
+            <input type="number" id="step" step="any">
+            <button onclick="drawGraph()">Dessiner le graphique</button>
+            <canvas id="myChart"></canvas>
+        </div>
+    </div>
+    
+    
     <div class="container">
         <div class="row">
             <div class="col-lg-6">
@@ -21,24 +37,24 @@
                         <button class="btn btn-secondary" onclick="appendToDisplay('7')">7</button>
                         <button class="btn btn-secondary" onclick="appendToDisplay('8')">8</button>
                         <button class="btn btn-secondary" onclick="appendToDisplay('9')">9</button>
-                        <button class="btn btn-danger" onclick="clearCalculator()">C</button>
+                        <button class="btn btn-danger" onclick="clearDisplay()">C</button>
                     </div>
                     <div class="button-row">
                         <button class="btn btn-secondary" onclick="appendToDisplay('6')">6</button>
                         <button class="btn btn-secondary" onclick="appendToDisplay('5')">5</button>
                         <button class="btn btn-secondary" onclick="appendToDisplay('4')">4</button>
-                        <button class="btn btn orange" onclick="calculatePercentage()">%</button>
+                        <button class="btn btn orange" onclick="selectFunction('%')">%</button>
                     </div>
                     <div class="button-row">
                         <button class="btn btn-secondary" onclick="appendToDisplay('3')">3</button>
                         <button class="btn btn-secondary" onclick="appendToDisplay('2')">2</button>
                         <button class="btn btn-secondary" onclick="appendToDisplay('1')">1</button>
-                        <button class="btn btn orange" onclick="calculateSquareRoot()">√</button>
+                        <button class="btn btn orange" onclick="selectFunction('√')">√</button>
                     </div>
                     <div class="button-row">
                         <button class="btn btn-secondary" onclick="appendToDisplay('0')">0</button>
                         <button class="btn btn-secondary" onclick="appendToDisplay('.')">.</button>
-                        <button class="btn btn-success" onclick="appendToDisplay('=')">=</button>
+                        <button class="btn btn-success" onclick="calculate()">=</button>
                         <button class="btn btn-dark" onclick="toggleDarkMode()">Dark Mode</button>
                     </div>
 
@@ -51,13 +67,15 @@
                     </div>
 
                     <div class="button-row">
-                        <button class="btn btn-info" onclick="calculateSine()">sin</button>
-                        <button class="btn btn-info" onclick="calculateCosine()">cos</button>
-                        <button class="btn btn-info" onclick="calculateTangent()">tan</button>
-                        <button class="btn btn-info" onclick="calculateLogarithm()">log</button>
-                </div>
+                        <button class="btn btn-info" onclick="selectFunction('sin')">sin</button>
+                        <button class="btn btn-info" onclick="selectFunction('cos')">cos</button>
+                        <button class="btn btn-info" onclick="selectFunction('tan')">tan</button>
+                        <button class="btn btn-info" onclick="selectFunction('log')">log</button>
+                    </div>
+                    
             </div>
         </div>
     </div>
+    <script src="main.js"></script>
 </body>
 </html>
