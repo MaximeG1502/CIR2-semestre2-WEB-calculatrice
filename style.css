@@ -1,19 +1,13 @@
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
+#calculator { /* calculator style */ 
+    position: absolute;
+    left: 10%;
+    background-color: #d6d4d4;
+    padding: 30px;
+    border-radius: 20px;
+    transform: scale(0.6);
 }
 
-#calculator {
-    background-color: #f2f2f2;
-    padding: 20px;
-    border-radius: 5px;
-    transform: scale(0.8);
-}
-
-#display {
+#display { /* display style */
     margin-bottom: 20px;
     font-size: 32px;
     text-align: right;
@@ -47,24 +41,96 @@ body {
     color: white;
 }
 
-.dark-mode #display {
+body.dark-mode {
     background-color: #555;
     color: #fff;
 }
 
-#graph {
-    align-self: flex-start; /* Positionne l'élément en haut */
-    margin-top: 20px; /* Ajoute une marge en haut pour l'éloigner du contenu principal */
-    margin-right: 10px; /* Ajoute une marge à droite pour l'éloigner du bord droit */
+.dark-mode #calculator {
+    background-color: black;
+}
+
+.dark-mode #display {
+    color: white;
+}
+
+.dark-mode .btn {
+    background-color: #555;
+    color: #fff;
+}
+
+.dark-mode .orange {
+    background-color: orange;
+    color: white;
+}
+
+.dark-mode #graph {
+    background-color: #555;
+}
+
+.dark-mode h1 {
+    color: #f8f9fa;
+    background-color: #007bff;
 }
 
 
+#graph {
+    position: absolute;
+    right: 3%;
+    background-color: #f8f9fa;
+    border-radius: 15px; 
+    padding: 20px; 
+    width: 300px; 
+}
+
 #graph label {
-    display: block; /* Affiche les étiquettes sur des lignes séparées */
-    margin-bottom: 5px; /* Ajoute un espacement entre les étiquettes et les éléments d'entrée */
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold; 
 }
 
 #graph input[type="number"] {
-    width: 100px; /* Ajuste la largeur de l'élément d'entrée pour l'aligner avec le bouton */
-    margin-right: 5px; /* Ajoute un espacement entre l'élément d'entrée et le bouton */
+    width: 100px;
+    margin-right: 5px;
+    padding: 5px; 
+    border-radius: 5px; 
 }
+
+#graph button {
+    background-color: #007bff; 
+    color: white; 
+    border: none; 
+    padding: 10px 20px; 
+    text-align: center; 
+    text-decoration: none; 
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer; 
+    border-radius: 5px;
+}
+
+
+h1 {
+    text-align: center;
+    font-family: 'Arial', sans-serif; 
+    color: #007bff; 
+    padding: 20px; 
+    background-color: #f8f9fa; 
+    border-radius: 15px; 
+    box-shadow: 0px 10px 20px rgba(0,0,0,0.19), 0px 6px 6px rgba(0,0,0,0.23); 
+}
+
+h5 {
+    position: fixed; 
+    bottom: 0; 
+    left: 0; 
+    width: 100%; 
+    text-align: center; 
+    padding: 10px; 
+    background-color: #f8f9fa; 
+    font-family: 'Arial', sans-serif; 
+    color: #007bff; 
+}
+
+

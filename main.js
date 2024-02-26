@@ -1,15 +1,38 @@
-const display = document.getElementById("display");
-let currentFunction = null;
+const display = document.getElementById("display"); //recover the elements
 
-function selectFunction(func) {
+let currentFunction = null; // variable for the switch case 
+
+
+document.addEventListener('keydown', function(event) { // type with keyboard
+    const key = event.key; 
+    if (!isNaN(key)) {
+        appendToDisplay(key);
+    } else if (key === 'Backspace') {
+        clearDisplay();
+    }else if (key === '+') {
+        appendToDisplay(key);
+    }else if (key === '-') {
+        appendToDisplay(key);
+    }else if (key === '*') {
+        appendToDisplay(key);
+    }else if (key === '/') {
+        appendToDisplay(key);
+    }else if (key === 'Enter') {
+        display.value = eval(display.value);
+    }
+});
+
+
+
+function selectFunction(func) { //process the different calculation cases
     currentFunction = func;
 }
 
-function appendToDisplay(input) {
+function appendToDisplay(input) { // function to show user inputs on the screen
     display.value += input;
 }
 
-function clearDisplay() {
+function clearDisplay() { // clear the screen
     display.value = "";
 }
 
@@ -17,10 +40,10 @@ function clearDisplay() {
 function calculate() {
     try {
         if (currentFunction !== null) {
-            const inputValue = parseFloat(display.value);
+            const inputValue = parseFloat(display.value); // conversion to decimal
             if (!isNaN(inputValue)) {
                 let result;
-                switch (currentFunction) {
+                switch (currentFunction) { //switch for differents cases sin,cos,tan or log functions
                     case 'sin':
                         result = Math.sin(inputValue);
                         display.value = `sin(${inputValue}) = ${result}`;
@@ -34,42 +57,44 @@ function calculate() {
                         display.value = `tan(${inputValue}) = ${result}`;
                         break;
                     case 'log':
-                        if (inputValue > 0) { // valeurs positives pour le log
+                        if (inputValue > 0) { // only positives values for log
                             result = Math.log(inputValue);
                             display.value = `log(${inputValue}) = ${result}`;
                         } else {
-                            display.value = "Erreur: Argument invalide pour log";
+                            display.value = "No valid Argument for Log";
                         }
                         break;
                     case '%':l
-                        display.value = inputValue / 100;
+                        display.value = inputValue / 100; // function modulo
                         break;
                     case '√':
-                        display.value = Math.sqrt(inputValue);
+                        display.value = Math.sqrt(inputValue); // squareroot function
                         break;
                     default:
-                        display.value = "Erreur: Fonction non reconnue";
+                        display.value = "Function is not valid"; // error
                 }
             } else {
-                display.value = "Erreur: Argument invalide";
+                display.value = "Error, please retry";
             }
         } else {
-            display.value = eval(display.value);
+            display.value = eval(display.value); // using eval function for basics operations
         }
     } catch (error) {
         display.value = "Erreur";
     }
-    currentFunction = null;
+    currentFunction = null; // set the variable at default at the end of each iterations
 }
 
-function toggleDarkMode() {
+function toggleDarkMode() { // dark mode function
     document.body.classList.toggle("dark-mode");
 }
 
 
-let myChart; // Déclarer la variable du graphique en dehors de la fonction
+let myChart; // graph variable
 
 function drawGraph() {
+
+    // differents variables for the plot and to recover the function's expression written by users
     const expression = document.getElementById('expression').value;
     const xMin = parseFloat(document.getElementById('x-min').value);
     const xMax = parseFloat(document.getElementById('x-max').value);
@@ -78,20 +103,19 @@ function drawGraph() {
     const xValues = generateRange(xMin, xMax, step);
     const yValues = xValues.map(x => evaluateFunction(expression, x));
 
-    // Vérifier si un graphique existe déjà et le détruire
+    // reset the graph if one is already created
     if (myChart) {
         myChart.destroy();
     }
 
-    // Configuration du nouveau graphique
-    const ctx = document.getElementById('myChart').getContext('2d');
+    const ctx = document.getElementById('myChart').getContext('2d'); // create the graph
     myChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: xValues, // Valeurs de x
+            labels: xValues, // x values
             datasets: [{
-                label: 'Fonction',
-                data: yValues, // Valeurs de y correspondantes
+                label: 'Function',
+                data: yValues, // y values
                 borderColor: 'rgb(75, 192, 192)',
                 tension: 0.1
             }]
@@ -111,7 +135,7 @@ function drawGraph() {
     });
 }
 
-function generateRange(min, max, step) {
+function generateRange(min, max, step) { //function to determined the domain and the step for each points
     const range = [];
     for (let i = min; i <= max; i += step) {
         range.push(i);
@@ -120,15 +144,24 @@ function generateRange(min, max, step) {
 }
 
 function evaluateFunction(expression, x) {
-    // Évalue l'expression de la fonction pour la valeur de x donnée
+    // calculate the differents values of the function for each values of x
     try {
-        const result = eval(expression.replace(/x/g, x));
+        // cos, sin, tan & log functions
+        const sin = Math.sin;
+        const cos = Math.cos;
+        const tan = Math.tan;
+        const log = Math.log;
+
+        const result = eval(expression.replace(/x/g, x)); // using eval function to calculate
+
         return result;
+
     } catch (error) {
-        console.error("Erreur lors de l'évaluation de l'expression:", error);
+        console.error("Error while calculating", error); // case for error
         return NaN;
     }
 }
+
 
 
 
